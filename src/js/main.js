@@ -134,7 +134,7 @@ function removeFromCache(target) {
     var parsedArray = parseIdLink(idLink)
 
     if (cache.filter(username => username.includes(parsedArray[1]).length <= 0)) return;
-    cache = removeByValue(cache, parsedArray[1])
+    removeByValue(cache, parsedArray[1])
 }
 
 $(document).on('DOMNodeInserted', function (event) {
