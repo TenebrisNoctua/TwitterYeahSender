@@ -1,0 +1,60 @@
+{
+    "name": "Twitter Yeah Sender",
+    "version": "1.0.0",
+    "description": "Sends the \"Yeah\" image when you like a tweet.",
+    "manifest_version": 3,
+    "author": "Tenebris Noctua",
+    "action": {
+        "default_tite": ""
+    },
+    "background": {
+        "service_worker": "js/_chrome/serviceWorker.js"
+    },
+    "icons": {
+        "16": "img/yeahIcon.png",
+        "32": "img/yeahIcon.png",
+        "64": "img/yeahIcon.png"
+    },
+    "content_scripts": [
+        {
+            "all_frames": true,
+            "matches": [
+                "*://www.twitter.com/*",
+                "*://*.twitter.com/*",
+                "*://www.x.com/*",
+                "*://*.x.com/*"
+            ],
+            "run_at": "document_end",
+            "js": [
+                "js/tools/jquery-3.3.1.min.js",
+                "js/tools/generalFunctions.js",
+                "js/tools/apis.js",
+                "js/main.js"
+            ]
+        }
+    ],
+    "permissions": [
+        "declarativeNetRequestWithHostAccess",
+        "contextMenus",
+        "scripting",
+        "storage",
+        "tabs"
+    ],
+    "host_permissions": [
+        "*://*.twitter.com/",
+        "*://*.x.com/*"
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "img/yeah.jpg",
+                "img/yeahIcon.png"
+            ],
+            "matches": [
+                "*://www.x.com/*",
+                "*://*.twitter.com/*",
+                "*://*.x.com/*"
+            ]
+        }
+    ]
+}
